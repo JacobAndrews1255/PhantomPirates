@@ -1,0 +1,196 @@
+[gd_scene load_steps=17 format=3 uid="uid://kvp4v2a5i0kt"]
+
+[ext_resource type="Script" path="res://Scenes/Ships/ShipScripts/british1.gd" id="1_ttcqj"]
+[ext_resource type="Texture2D" uid="uid://dj627qlxno1wh" path="res://Art/playerShip.png" id="2_lbgig"]
+[ext_resource type="Texture2D" uid="uid://vhbfjoq40d0h" path="res://Art/British1.png" id="2_tk1yo"]
+[ext_resource type="Texture2D" uid="uid://b5g36q2af66ct" path="res://Art/frontSplash.png" id="3_lnvm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7upv"]
+atlas = ExtResource("3_lnvm1")
+region = Rect2(12, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cudfm"]
+atlas = ExtResource("3_lnvm1")
+region = Rect2(0, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6f0a"]
+atlas = ExtResource("3_lnvm1")
+region = Rect2(24, 0, 12, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8pfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7upv")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_cudfm")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_r6f0a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vg4c8"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3hh8r"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ylyp"]
+atlas = ExtResource("2_tk1yo")
+region = Rect2(96, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cky7j"]
+atlas = ExtResource("2_tk1yo")
+region = Rect2(108, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ihm1"]
+atlas = ExtResource("2_tk1yo")
+region = Rect2(120, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fq65"]
+atlas = ExtResource("2_tk1yo")
+region = Rect2(132, 0, 12, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wdpe"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_2ylyp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cky7j")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3ihm1")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0fq65")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_my4lr"]
+radius = 39.0128
+
+[node name="British1" type="CharacterBody2D"]
+collision_layer = 2049
+collision_mask = 2049
+script = ExtResource("1_ttcqj")
+
+[node name="Boat" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("2_tk1yo")
+hframes = 12
+
+[node name="frontSplashAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4.50232, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_m8pfv")
+frame_progress = 0.725452
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vg4c8")
+
+[node name="backSplashMarker" type="Marker2D" parent="."]
+position = Vector2(-11, 0)
+rotation = -3.14159
+
+[node name="RightShootMarker" type="Marker2D" parent="."]
+position = Vector2(0, 4)
+rotation = -4.71238
+
+[node name="RightTopShootMarker" type="Marker2D" parent="."]
+position = Vector2(3, 4)
+rotation = -4.71238
+
+[node name="RightBottomShootMarker" type="Marker2D" parent="."]
+position = Vector2(-4, 4)
+rotation = -4.71238
+
+[node name="LeftShootMarker" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+rotation = -7.85397
+
+[node name="LeftBottomShootMarker" type="Marker2D" parent="."]
+position = Vector2(-4, -4)
+rotation = -7.85397
+
+[node name="LeftTopShootMarker" type="Marker2D" parent="."]
+position = Vector2(3, -4)
+rotation = -7.85397
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_3hh8r")
+
+[node name="DeathSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.57079
+sprite_frames = SubResource("SpriteFrames_4wdpe")
+frame_progress = 1.0
+
+[node name="BoatHit" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.57079
+texture = ExtResource("2_lbgig")
+hframes = 14
+frame = 13
+
+[node name="MagicTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_my4lr")
+
+[node name="LeftShoot" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="LeftShoot"]
+position = Vector2(1, 2)
+polygon = PackedVector2Array(-1, -7, -55, -44, 54, -44)
+
+[node name="RightShoot" type="Area2D" parent="."]
+rotation = 3.14159
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="RightShoot"]
+position = Vector2(1, 2)
+polygon = PackedVector2Array(-1, -7, -54.9999, -47.0001, 51.0001, -45.9999)
+
+[connection signal="area_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_area_shape_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="area_entered" from="LeftShoot" to="." method="_on_left_shoot_area_entered"]
+[connection signal="area_exited" from="LeftShoot" to="." method="_on_left_shoot_area_exited"]
+[connection signal="area_shape_entered" from="RightShoot" to="." method="_on_right_shoot_area_shape_entered"]
+[connection signal="area_shape_exited" from="RightShoot" to="." method="_on_right_shoot_area_shape_exited"]

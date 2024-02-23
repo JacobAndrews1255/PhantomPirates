@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://djbrp2f4yj8nm"]
+
+[ext_resource type="Texture2D" uid="uid://cbq568a316uek" path="res://Art/FishingBoat.png" id="1_l62yx"]
+[ext_resource type="Script" path="res://Scenes/Ships/ShipScripts/fishing_ship.gd" id="1_vq8xp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4apvj"]
+radius = 1.0
+height = 6.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtxgn"]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_786d3"]
+atlas = ExtResource("1_l62yx")
+region = Rect2(15, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruoe0"]
+atlas = ExtResource("1_l62yx")
+region = Rect2(20, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gu5o"]
+atlas = ExtResource("1_l62yx")
+region = Rect2(25, 0, 5, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a71qf"]
+atlas = ExtResource("1_l62yx")
+region = Rect2(30, 0, 5, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bivjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_786d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruoe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gu5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a71qf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqlsf"]
+radius = 29.0172
+
+[node name="FishingShip" type="CharacterBody2D"]
+script = ExtResource("1_vq8xp")
+
+[node name="Boat" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_l62yx")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4apvj")
+
+[node name="backSplashMarker" type="Marker2D" parent="."]
+position = Vector2(-4, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vtxgn")
+
+[node name="DeathSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_bivjr")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_fqlsf")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]

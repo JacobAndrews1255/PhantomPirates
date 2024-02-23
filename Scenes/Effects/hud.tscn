@@ -1,0 +1,226 @@
+[gd_scene load_steps=9 format=3 uid="uid://blf2f4ef6erxr"]
+
+[ext_resource type="Script" path="res://Scenes/Effects/hud.gd" id="1_8x52m"]
+[ext_resource type="Texture2D" uid="uid://byo4ka3smfhel" path="res://Art/bottomHUD.png" id="1_llyix"]
+[ext_resource type="Texture2D" uid="uid://btuh78fe7i231" path="res://Art/heart.png" id="2_57c7v"]
+[ext_resource type="Texture2D" uid="uid://dr5yxo4v7occ" path="res://Art/regularCannons.png" id="3_8dsnx"]
+[ext_resource type="Texture2D" uid="uid://dbowgqjfap0t" path="res://Art/font.png" id="3_hb5rp"]
+[ext_resource type="Texture2D" uid="uid://bi7gs117waanc" path="res://Art/bolas.png" id="4_5mrd5"]
+[ext_resource type="Texture2D" uid="uid://t3rlrbg6lv43" path="res://Art/magic.png" id="5_63fdc"]
+[ext_resource type="Texture2D" uid="uid://dryx4sxkxc4hj" path="res://Art/bomb.png" id="7_bbvuh"]
+
+[node name="HUD" type="Node2D"]
+script = ExtResource("1_8x52m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(600, 585)
+scale = Vector2(8.25, 8.25)
+transform = Transform2D(8.25, 0, 0, 8.25, 600, 585)
+
+[node name="bottomHUD" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-0.5, -1)
+texture = ExtResource("1_llyix")
+
+[node name="H" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-53.2121, 1.45454)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 7
+
+[node name="P" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(3.63636, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 15
+
+[node name="P_" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(7.27273, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 37
+
+[node name="W" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(43.6364, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 22
+
+[node name="P2" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(49.697, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 15
+
+[node name="P_2" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(53.3333, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 37
+
+[node name="A" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(65.2121, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+
+[node name="A_" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(69.0909, 0.484848)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 37
+
+[node name="A1" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(71.5152, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 35
+
+[node name="A2" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(75.1515, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 35
+
+[node name="M" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(86.0606, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 41
+
+[node name="M_" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(90.9091, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 37
+
+[node name="M1" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(93.3333, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 35
+
+[node name="M2" type="Sprite2D" parent="CanvasLayer/H"]
+texture_filter = 1
+position = Vector2(96.9697, 0)
+texture = ExtResource("3_hb5rp")
+hframes = 26
+vframes = 2
+frame = 35
+
+[node name="Heart1" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-42.5, 2)
+texture = ExtResource("2_57c7v")
+
+[node name="Heart2" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-36.5, 2.00001)
+texture = ExtResource("2_57c7v")
+
+[node name="Heart3" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-30.5, 2)
+texture = ExtResource("2_57c7v")
+
+[node name="Heart4" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-24.5, 2)
+texture = ExtResource("2_57c7v")
+
+[node name="Heart5" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(-18.5, 2)
+texture = ExtResource("2_57c7v")
+
+[node name="Cannon1" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.60606, 0.848488)
+texture = ExtResource("3_8dsnx")
+hframes = 9
+vframes = 3
+frame = 15
+
+[node name="Cannon2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.60606, -1.09091)
+texture = ExtResource("3_8dsnx")
+hframes = 9
+vframes = 3
+frame = 15
+
+[node name="Cannon3" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.60606, 2.90909)
+texture = ExtResource("3_8dsnx")
+hframes = 9
+vframes = 3
+frame = 15
+
+[node name="Cannon4" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.12122, -2.54546)
+rotation = -0.456454
+texture = ExtResource("3_8dsnx")
+hframes = 9
+vframes = 3
+frame = 15
+
+[node name="Cannon5" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.36363, 4.48485)
+rotation = 0.261799
+texture = ExtResource("3_8dsnx")
+hframes = 9
+vframes = 3
+frame = 15
+
+[node name="Bolas" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4, 1)
+texture = ExtResource("4_5mrd5")
+
+[node name="Bomb" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(4, 1)
+texture = ExtResource("7_bbvuh")
+hframes = 2
+
+[node name="Magic" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+texture_filter = 1
+position = Vector2(4.84848, 0.484848)
+texture = ExtResource("5_63fdc")
+hframes = 6
+frame = 4

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccdswgyhl814g"]
+
+[ext_resource type="Texture2D" uid="uid://ltoft4ohs0ic" path="res://Art/backSplash.png" id="1_p4stf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab6f0"]
+atlas = ExtResource("1_p4stf")
+region = Rect2(0, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eouj"]
+atlas = ExtResource("1_p4stf")
+region = Rect2(12, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu3yl"]
+atlas = ExtResource("1_p4stf")
+region = Rect2(24, 0, 12, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sd4bn"]
+animations = [{
+"frames": [{
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_ab6f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5eouj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu3yl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="backSplashEffect" type="Node2D"]
+z_index = -1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.773825, 0)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_sd4bn")
+frame_progress = 0.312506

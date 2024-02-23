@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4i1xusjrjoyj"]
+
+[ext_resource type="Theme" uid="uid://b86a5xqdw8gnb" path="res://UI/game_theme.tres" id="1_g7coy"]
+[ext_resource type="Texture2D" uid="uid://byo4ka3smfhel" path="res://Art/bottomHUD.png" id="2_firaw"]
+
+[node name="HUD_UI" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_g7coy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="bottomHUD" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_right = 128.0
+offset_bottom = 23.0
+texture = ExtResource("2_firaw")
+stretch_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.00385, 1)
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+columns = 8
+
+[node name="HP" type="Label" parent="CanvasLayer/PanelContainer/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_g7coy")
+text = "HP: "

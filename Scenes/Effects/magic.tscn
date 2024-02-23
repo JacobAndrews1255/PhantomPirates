@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://dqcb45afn3tux"]
+
+[ext_resource type="Texture2D" uid="uid://t3rlrbg6lv43" path="res://Art/magic.png" id="1_ajwmw"]
+[ext_resource type="Script" path="res://Scenes/Effects/magic.gd" id="1_dgjuy"]
+[ext_resource type="Texture2D" uid="uid://d1i2d43maos30" path="res://Art/regularCannonsHit.png" id="3_mlqak"]
+
+[sub_resource type="Curve2D" id="Curve2D_oij11"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4dv4"]
+radius = 1.56403
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnuqa"]
+atlas = ExtResource("1_ajwmw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5dr0"]
+atlas = ExtResource("1_ajwmw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vks3m"]
+atlas = ExtResource("1_ajwmw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aotw"]
+atlas = ExtResource("1_ajwmw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8xir"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qnuqa")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w5dr0")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_vks3m")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_3aotw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k61o"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21tim"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ekjk"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfq7a"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okyji"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_3k61o")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_21tim")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_1ekjk")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_bfq7a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o158j"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnrsd"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aiq1"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw3gh"]
+atlas = ExtResource("3_mlqak")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1wwp"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_o158j")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_pnrsd")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_4aiq1")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_yw3gh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Magic" type="Node2D"]
+script = ExtResource("1_dgjuy")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oij11")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+loop = false
+
+[node name="HitboxMagic" type="Area2D" parent="Path2D/PathFollow2D"]
+position = Vector2(1, 0)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/HitboxMagic"]
+position = Vector2(4.49354, 0.420448)
+shape = SubResource("CircleShape2D_f4dv4")
+
+[node name="MagicSprite" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_u8xir")
+frame = 3
+frame_progress = 1.0
+
+[node name="SplashSprite" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_okyji")
+
+[node name="HitSprite" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_u1wwp")
+
+[connection signal="area_entered" from="Path2D/PathFollow2D/HitboxMagic" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/HitboxMagic" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch6kwd16j5dx3"]
+
+[ext_resource type="Texture2D" uid="uid://d2m4l73v8umvx" path="res://Art/ocean.png" id="1_dhiff"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_t1jku"]
+[ext_resource type="Texture2D" uid="uid://c1olosxkyaiuv" path="res://Art/land.png" id="2_uhgxj"]
+[ext_resource type="PackedScene" uid="uid://tk3s40elfg45" path="res://Scenes/Ships/playerShip.tscn" id="3_vdhgt"]
+[ext_resource type="PackedScene" uid="uid://4jbswlkbnfe1" path="res://Scenes/Ships/spawn_point.tscn" id="5_bbw7p"]
+[ext_resource type="PackedScene" uid="uid://djbrp2f4yj8nm" path="res://Scenes/Ships/fishing_ship.tscn" id="6_b6ad1"]
+[ext_resource type="PackedScene" uid="uid://blf2f4ef6erxr" path="res://Scenes/Effects/hud.tscn" id="6_uhkj6"]
+[ext_resource type="PackedScene" uid="uid://kvp4v2a5i0kt" path="res://Scenes/Ships/british1.tscn" id="7_jodum"]
+
+[node name="main" type="Node2D"]
+position = Vector2(61, -44)
+script = ExtResource("1_t1jku")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(-973, 1047)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_dhiff")
+
+[node name="Shallows" type="Area2D" parent="."]
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="Shallows" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(-186, -126, -169, -94, -129, -72, -79, -64, -41, -63, 2, -77, 34, -111, 54, -160, 47, -220, 14, -272, -27, -302, -77, -327, -131, -325, -175, -308, -244, -305, -289, -284, -306, -259, -281, -207, -271, -178, -245, -148, -225, -139, -198, -133, -183, -139)
+
+[node name="Shallows2" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(-348, -33, -336, -40, -320.819, -40, -313, -37, -304, -40, -300, -41, -288.454, -40.7691, -282, -36, -274, -29, -271, -26, -267, -21, -267, -9, -272, -2, -276, 8, -284, 16, -287, 21, -285, 37, -283, 38, -283.507, 44.089, -285, 49, -289, 50, -292, 55, -300, 63, -305, 63, -310, 65, -312, 67, -315, 65, -311, 60, -310, 57, -307, 53, -305, 43, -306, 34, -304, 32, -305, 27, -310, 22, -318, 22, -326, 25, -335, 27, -343.015, 27.229, -362, 14, -362.317, 7.66693, -365, 1, -362.808, -2.15783, -363, -6, -359, -11)
+
+[node name="Shallows3" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(-184, 43, -176, 39, -131, 39, -117, 48, -108, 56, -105, 64, -100, 74, -100, 97, -107, 105, -109, 110, -119, 119, -128, 130, -157, 132, -166, 126, -174, 123, -182, 117, -192, 114, -204.691, 106.009, -209, 105, -219, 97, -235, 95, -239, 92, -243.764, 93.9056, -250, 94, -253, 97, -256, 97, -259, 94, -258, 90, -246, 78, -241, 76, -235, 72, -229, 66, -221, 66, -193, 45)
+
+[node name="Shallows4" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(-49, 154, -20, 154, -11, 158, 13.6593, 162.624, 22, 167, 37, 169, 46, 180, 57, 192, 62, 205, 61, 222, 54, 238, 48, 256, 42, 267, 34, 276, 22, 278, 11, 286, 5, 292, -5, 297, -16, 296, -26, 293, -41, 291, -56, 286, -63, 280, -71, 263, -71, 254, -79, 245, -83, 233, -83, 213, -74, 188, -63, 167, -59, 160)
+
+[node name="Shallows5" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(50, 111, 49, 102, 63, 82, 71, 72, 74, 67, 78, 51, 87, 32, 94, 25, 109, 20, 145, 20, 165, 24, 188, 29, 230, 30, 241, 41, 245, 49, 260, 68, 273, 83, 283, 99, 284, 147, 275, 171, 265, 186, 245, 210, 233, 221, 226, 224, 216, 226, 211, 222, 207, 222, 200, 216, 182, 210, 174, 203, 174, 194, 181, 179, 181, 160, 176, 152, 164, 141, 155, 135, 124, 135, 112, 128, 94, 125, 65, 124, 55, 118)
+
+[node name="Shallows6" type="CollisionPolygon2D" parent="Shallows"]
+polygon = PackedVector2Array(-21, 390, -27, 425, -130, 421, -268, 376, -344, 330, -415, 232, -446, 165, -480, 94, -517.873, 69.5594, -557, 5, -579, -51, -484, -240, -420, -340, -31, -437, 51, -437, 143, -405, 183, -356, 237, -296, 427, -80, 423, 196, 285, 357, 223, 383, 186, 418, 76, 435, -26, 425, -20, 390, 21, 398, 40, 400, 113, 410, 143, 401, 189, 368, 222, 350, 264, 328, 284, 298, 311, 259, 341, 235, 380, 199, 379, 161, 373, 138, 372, 126, 353, 100, 351.808, 81.7919, 366, 60, 373, 34, 370, 8, 362.519, -12.3066, 364, -30, 357, -51, 344, -74, 326, -93, 309, -97, 274, -131, 267, -169, 247, -204, 207, -243, 178, -294, 173, -306, 142, -355, 130, -364, 49, -382, 3, -393, -36, -388, -70, -376, -118, -364, -152, -361, -191, -357, -223, -338, -271, -323, -321, -307, -355, -298, -386, -289, -412, -273, -436, -249, -442, -228, -454, -218, -468, -179, -483, -154, -502, -119, -502, -77, -516, -38, -517, -18, -509, 8, -498, 32, -468, 46, -447, 66, -424, 117, -406, 150, -368, 187, -335, 246, -328, 284, -295, 320, -271, 334, -195, 354, -172, 369, -146, 379, -66, 381)
+
+[node name="LandCollision" type="StaticBody2D" parent="."]
+collision_layer = 5
+collision_mask = 0
+
+[node name="Land" type="Sprite2D" parent="LandCollision"]
+texture_filter = 1
+position = Vector2(-172, 398)
+texture = ExtResource("2_uhgxj")
+
+[node name="mainLand1" type="CollisionPolygon2D" parent="LandCollision"]
+build_mode = 1
+polygon = PackedVector2Array(-143, -98, -121, -98, -110, -92, -76, -90, -55, -82, -36, -80, -18, -90, -7, -95, 3, -113, 12, -127, 32, -139, 33, -155, 27, -165, 27, -174, 37, -187, 37, -192, 30, -201, 30, -212, 17, -224, 15, -240, 5, -257, -5, -266, -12, -269, -29, -267, -50, -273, -59, -281, -60, -304, -68, -311, -99, -310, -134, -284, -153, -275, -187, -274, -197, -282, -219, -282, -240, -286, -247, -284, -255, -286, -270, -280, -279, -276, -288, -263, -289, -249, -272, -236, -246, -234, -240, -230, -237, -222, -243, -215, -244, -203, -247, -199, -258, -193, -257, -186, -244, -183, -243, -173, -233, -158, -221, -145, -199, -148, -188, -169, -165, -195, -161, -200, -154, -200, -151, -204, -148, -212, -137, -213, -115, -228, -108, -225, -98, -227, -81, -219, -71, -212, -78, -207, -74, -203, -66, -209, -64, -206, -63, -197, -70, -195, -70, -189, -57, -191, -52, -184, -53, -174, -49, -170, -48, -161, -41, -142, -42, -135, -51, -127, -68, -123, -87, -123, -100, -128, -113, -136, -121, -136, -128, -132, -142, -133, -152, -137, -167, -137, -173, -133, -173, -120, -164, -111, -156, -108, -152, -102)
+
+[node name="mainLand2" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-527, -247, -529, -249, -529, -255, -532, -257, -532, -261, -530, -262, -526, -269, -525, -274, -521, -279, -521, -279, -521, -283, -517, -286, -515, -290, -514, -294, -512, -297, -509, -297, -497, -297, -489, -294, -475, -294, -469, -297, -469, -298, -460, -298, -460, -297, -453, -288, -449, -283, -447, -277, -446, -273, -447, -266, -451, -264, -452, -256, -448, -256, -448, -254, -449, -252, -450, -250, -459, -250, -461, -251, -468, -249, -472, -238, -474, -238, -477, -247, -486, -256, -488, -257, -493, -257, -495, -255, -495, -249, -492, -247, -492, -246, -495, -244, -502, -241, -512, -239, -512, -238, -514, -238, -516, -244, -522, -247)
+
+[node name="mainLand3" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-465, -223, -465, -222, -464, -222, -464, -220, -464, -219, -464, -218, -465, -218, -465, -217, -466, -216, -467, -215, -468, -214, -468, -214, -469, -214, -470, -215, -471, -216, -471, -218, -472, -218, -472, -222, -471, -222, -471, -224, -470, -225, -467, -225)
+
+[node name="mainLand4" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-478, -204, -478, -206, -475, -207, -475, -208, -474, -208, -473, -207, -473, -206, -476, -203, -477, -204)
+
+[node name="mainLand5" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-408, -177, -397, -177, -397, -178, -391, -180, -389, -182, -388, -183, -388, -186, -390, -189, -393, -189, -393, -190, -396, -190, -398, -188, -401, -188, -403, -184, -405, -181, -406, -180, -409, -179, -409, -178)
+
+[node name="mainLand6" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-370, -178, -370, -190, -368, -197, -367, -201, -365, -201, -362, -204, -361, -205, -357, -205, -354, -208, -354, -212, -347, -214, -309, -214, -298, -209, -294, -205, -294, -201, -292, -198, -290, -194, -286, -191, -285, -185, -281, -178, -281, -174, -284, -167, -287, -162, -293, -161, -295, -160, -300, -155, -304, -150, -305, -144, -308, -141, -309, -139, -312, -138, -320, -138, -325, -139, -329, -142, -335, -149, -338, -155, -341, -158, -347, -158, -351, -160, -353, -162, -355, -163, -361, -163, -362, -159, -362, -159, -368, -159, -368, -168, -366, -170, -368, -174, -369, -174)
+
+[node name="mainLand7" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-237, -49, -237, -49, -230, -58, -227, -59, -225, -63, -218, -69, -214, -71, -211, -75, -210, -78, -207, -79, -204, -82, -201, -82, -200, -87, -192, -90, -171, -90, -162, -83, -159, -80, -155, -78, -149, -71, -147, -65, -145, -62, -145, -51, -143, -49, -141, -45, -141, -41, -136, -35, -137, -28, -137, -22, -135, -17, -137, -9, -146, 2, -154, 5, -160, 14, -169, 19, -181, 19, -190, 17, -207, 17, -215, 12, -216, 9, -219, 5, -228, 0, -232, -5, -236, -14, -238, -30, -239, -33, -239, -40)
+
+[node name="mainLand8" type="CollisionPolygon2D" parent="LandCollision"]
+position = Vector2(173, 262)
+build_mode = 1
+polygon = PackedVector2Array(-99, -162, -85, -192, -82, -204, -77, -215, -69, -227, -64, -232, -48, -233, -40, -237, -31, -237, -27, -235, -9, -228, 2, -227, 13, -225, 24, -227, 54, -227, 59, -216, 62, -208, 67, -194, 70, -192, 80, -183, 91, -167, 94, -157, 97, -145, 106, -134, 106, -123, 102, -110, 93, -95, 88, -93, 87, -87, 77, -76, 73, -73, 63, -58, 56, -51, 49, -47, 43, -46, 39, -49, 40, -56, 39, -59, 12, -57, 9, -60, 8, -63, 13, -68, 14, -74, 22, -85, 26, -86, 33, -94, 39, -96, 49, -106, 49, -118, 43, -127, 34, -137, 27, -140, 25, -133, 20, -131, 6, -131, 3, -139, -4, -142, -6, -150, -11.7114, -151.01, -15, -154, -16, -160, -20, -161, -22, -159, -27, -159, -27, -167, -44, -164, -67, -155, -73, -155, -83, -159, -96, -156)
+
+[node name="BorderCollision" type="StaticBody2D" parent="."]
+collision_layer = 5
+collision_mask = 0
+
+[node name="Border" type="CollisionPolygon2D" parent="BorderCollision"]
+position = Vector2(173, 262)
+polygon = PackedVector2Array(-216, 178, 174, 177, 303, -62, 222, -426, -90, -719, -459, -676, -739, -482, -747, -209, -481, 99, -217, 177, -204, 154, -224, 151, -261, 150, -283, 156, -352, 133, -402, 108, -465, 88, -483, 76, -505, 58, -532, 24, -549, -7, -564, -31, -595, -54, -602, -82, -614, -114, -621, -149, -634, -167, -666, -197, -685, -203, -695, -212, -702.54, -223.041, -709, -239, -723, -253, -734, -277, -734, -296, -725, -331, -718, -345, -717, -354, -712, -359, -705, -371, -702, -381, -691.256, -396.18, -681, -415, -673, -426, -671.091, -431.584, -666, -438, -663, -447, -662, -456, -660.071, -463.809, -660, -473, -655, -483, -650, -487, -645, -493, -642, -503, -632, -524, -625, -536, -619, -542, -611, -556, -601, -566, -593, -577, -577, -582, -561, -592, -544, -595, -520, -597, -487, -602, -463, -610, -444, -618, -422, -635, -399, -640, -386.438, -645.257, -372, -650, -344.174, -650.612, -336, -653, -314, -653, -304, -649, -289, -651, -276.291, -657.915, -260, -662, -245, -671, -229, -683, -207, -691, -192.358, -691.472, -181, -694, -167.63, -692.27, -145, -693, -136, -689, -118, -671, -109, -666, -97.4576, -663.636, -89, -661, -38, -660, -27, -653, -26, -644, -20, -633, -9, -619, 3, -606, 10, -600, 18, -598, 29, -588, 35, -567, 43, -558, 59, -529, 75, -508, 97, -489, 129, -472, 123, -461, 123, -450, 130, -441, 132, -436, 139, -423, 142, -411, 147, -400, 158, -390, 167, -385, 174, -378, 201, -363, 207, -357, 216, -332, 220, -316, 241, -288, 241, -286, 232, -261, 222, -245, 223, -218, 207, -182, 207, -144, 209, -142, 217, -108, 225, -96, 230, -82, 222, -70, 210, -48, 195, -34, 182, -22, 172, 0, 156, 11, 148, 22, 141, 29, 133, 38, 131, 46, 121, 71, 109, 82, 94, 85, 84, 93, 74, 107, 56, 113, 37, 124, 31, 125, 1, 142, -8, 145, -35, 159, -40, 163, -55, 164, -76, 170, -101, 170, -133, 157, -204, 155)
+
+[node name="playerShip" parent="." instance=ExtResource("3_vdhgt")]
+position = Vector2(-165, -155)
+
+[node name="MapCamera" type="Camera2D" parent="playerShip"]
+rotation = 1.5708
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 1.0
+
+[node name="HUD" parent="playerShip" instance=ExtResource("6_uhkj6")]
+z_index = 2
+scale = Vector2(2, 2)
+
+[node name="SP_BottomLeft" parent="playerShip" instance=ExtResource("5_bbw7p")]
+position = Vector2(-144, 88)
+
+[node name="SP_TopLeft" parent="playerShip" instance=ExtResource("5_bbw7p")]
+position = Vector2(-144, -88)
+
+[node name="SP_TopRight" parent="playerShip" instance=ExtResource("5_bbw7p")]
+position = Vector2(144, -88)
+
+[node name="SP_BottomRight" parent="playerShip" instance=ExtResource("5_bbw7p")]
+position = Vector2(144, 88)
+
+[node name="fishingBoatTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="FishingShip" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(-430, -38)
+
+[node name="FishingShip2" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(-267, -102)
+
+[node name="FishingShip3" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(-396, -148)
+
+[node name="FishingShip4" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(-161, 234)
+
+[node name="FishingShip5" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(149, -73)
+
+[node name="FishingShip6" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(66, -294)
+
+[node name="FishingShip7" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(161, 265)
+
+[node name="FishingShip8" parent="." instance=ExtResource("6_b6ad1")]
+position = Vector2(73, 313)
+
+[node name="British1" parent="." instance=ExtResource("7_jodum")]
+position = Vector2(-229, -72)
+
+[connection signal="body_entered" from="Shallows" to="playerShip" method="_on_shallows_body_entered"]
+[connection signal="body_exited" from="Shallows" to="playerShip" method="_on_shallows_body_exited"]
+[connection signal="area_shape_entered" from="playerShip/SP_BottomLeft" to="." method="_on_sp_bottom_left_area_shape_entered"]
+[connection signal="area_shape_exited" from="playerShip/SP_BottomLeft" to="." method="_on_sp_bottom_left_area_shape_exited"]
+[connection signal="area_shape_entered" from="playerShip/SP_TopLeft" to="." method="_on_sp_top_left_area_shape_entered"]
+[connection signal="area_shape_exited" from="playerShip/SP_TopLeft" to="." method="_on_sp_top_left_area_shape_exited"]
+[connection signal="area_shape_entered" from="playerShip/SP_TopRight" to="." method="_on_sp_top_right_area_shape_entered"]
+[connection signal="area_shape_exited" from="playerShip/SP_TopRight" to="." method="_on_sp_top_right_area_shape_exited"]
+[connection signal="area_shape_entered" from="playerShip/SP_BottomRight" to="." method="_on_sp_bottom_right_area_shape_entered"]
+[connection signal="area_shape_exited" from="playerShip/SP_BottomRight" to="." method="_on_sp_bottom_right_area_shape_exited"]

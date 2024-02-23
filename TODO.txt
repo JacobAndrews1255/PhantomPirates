@@ -1,0 +1,6 @@
+DONE add more backSplash
+DONE add collision for land for cannon to hit
+DONE add collision for shallow for boat to slow down
+DONE fix cannon to follow a path if possible
+DONE add in fisher boat for target practice
+DONE add movement to fisher boat

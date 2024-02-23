@@ -1,0 +1,191 @@
+[gd_scene load_steps=17 format=3 uid="uid://tk3s40elfg45"]
+
+[ext_resource type="Script" path="res://Scenes/Ships/ShipScripts/playerShip.gd" id="1_ru14y"]
+[ext_resource type="Texture2D" uid="uid://dj627qlxno1wh" path="res://Art/playerShip.png" id="1_w2uni"]
+[ext_resource type="Texture2D" uid="uid://b5g36q2af66ct" path="res://Art/frontSplash.png" id="3_npbry"]
+[ext_resource type="Texture2D" uid="uid://bcqbc5ato7r1c" path="res://Art/aim.png" id="4_wgsy3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7upv"]
+atlas = ExtResource("3_npbry")
+region = Rect2(12, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cudfm"]
+atlas = ExtResource("3_npbry")
+region = Rect2(0, 0, 12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6f0a"]
+atlas = ExtResource("3_npbry")
+region = Rect2(24, 0, 12, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m8pfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7upv")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_cudfm")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_r6f0a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vg4c8"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3hh8r"]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syl17"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngaiq"]
+atlas = ExtResource("1_w2uni")
+region = Rect2(108, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrvcq"]
+atlas = ExtResource("1_w2uni")
+region = Rect2(120, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au5xg"]
+atlas = ExtResource("1_w2uni")
+region = Rect2(132, 0, 12, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sng2v"]
+atlas = ExtResource("1_w2uni")
+region = Rect2(144, 0, 12, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wdpe"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ngaiq")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vrvcq")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_au5xg")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_sng2v")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="playerShip" type="CharacterBody2D"]
+collision_layer = 2051
+collision_mask = 2049
+script = ExtResource("1_ru14y")
+
+[node name="Boat" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_w2uni")
+hframes = 14
+
+[node name="frontSplashAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4.50232, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_m8pfv")
+frame_progress = 0.725452
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vg4c8")
+
+[node name="backSplashMarker" type="Marker2D" parent="."]
+position = Vector2(-11, 0)
+rotation = -3.14159
+
+[node name="RightShootMarker" type="Marker2D" parent="."]
+position = Vector2(0, 4)
+rotation = -4.71238
+
+[node name="RightTopShootMarker" type="Marker2D" parent="."]
+position = Vector2(3, 4)
+rotation = -4.71238
+
+[node name="RightBottomShootMarker" type="Marker2D" parent="."]
+position = Vector2(-4, 4)
+rotation = -4.71238
+
+[node name="LeftShootMarker" type="Marker2D" parent="."]
+position = Vector2(0, -4)
+rotation = -7.85397
+
+[node name="LeftBottomShootMarker" type="Marker2D" parent="."]
+position = Vector2(-4, -4)
+rotation = -7.85397
+
+[node name="LeftTopShootMarker" type="Marker2D" parent="."]
+position = Vector2(3, -4)
+rotation = -7.85397
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_3hh8r")
+
+[node name="RamPlayer" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RamPlayer"]
+position = Vector2(5, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_syl17")
+
+[node name="DeathSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.57079
+sprite_frames = SubResource("SpriteFrames_4wdpe")
+frame = 3
+frame_progress = 1.0
+
+[node name="BoatHit" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+rotation = 1.57079
+texture = ExtResource("1_w2uni")
+hframes = 14
+frame = 13
+
+[node name="LeftAim" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -4)
+rotation = 4.71238
+texture = ExtResource("4_wgsy3")
+
+[node name="RightAim" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1, 4)
+rotation = 7.85397
+texture = ExtResource("4_wgsy3")
+
+[node name="MagicTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_area_shape_entered"]
+[connection signal="area_shape_entered" from="RamPlayer" to="." method="_on_ram_player_area_shape_entered"]

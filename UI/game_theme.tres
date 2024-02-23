@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b86a5xqdw8gnb"]
+
+[ext_resource type="FontFile" uid="uid://2yquvp80rjc8" path="res://Art/PixelGamingRegular-d9w0g.ttf" id="1_kk246"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vgpe"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmtny"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+default_font = ExtResource("1_kk246")
+/styles/bottomHUD = SubResource("StyleBoxFlat_3vgpe")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 17
+Label/fonts/font = ExtResource("1_kk246")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_lmtny")
